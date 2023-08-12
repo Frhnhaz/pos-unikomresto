@@ -232,7 +232,7 @@ while ($record = mysqli_fetch_array($query)) {
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                        <button name="input_user_validate" type="submit" class="btn btn-primary" value="12345">Simpan</button>
+                                        <button name="edit_user_validate" type="submit" class="btn btn-primary" value="12345">Simpan</button>
                                     </div>
                                 </form>
                             </div>

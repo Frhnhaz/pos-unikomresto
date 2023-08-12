@@ -18,7 +18,7 @@ $imageType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
 if(!empty($_POST['input_menu_validate'])){
     // Cek gambar atau bukan
-    $cek = getimagesize($_FILES['foto']['tmp_name']);
+    $cek = getimagesize($_FILES['foto']['name_menu']);
     if($cek === false){
         $message = "Ini bukan file gambar";
         $statusUpload = 0;
@@ -49,11 +49,6 @@ if($statusUpload == 0){
     $message = '<script>alert("'.$message.', gambar tidak dapat diupload")
     window.location="../menu"</script>';
 }else{
-    $select = mysqli_query($conn, "SELECT * FROM tb_menu WHERE nama_menu = '$nama_menu'");
-    if (mysqli_num_rows($select) > 0){
-        $message = '<script>alert("Menu sudah ada")
-    window.location="../menu"</script>';
-    }else{
         if(move_uploaded_file($_FILES['foto']['tmp_name'], $target_file)){
             $query = mysqli_query($conn, "UPDATE tb_menu SET foto = '".$kode_rand.$_FILES['foto']['name']."', nama_menu = '$nama_menu', keterangan = '$keterangan', kategori = '$kat_menu', harga = '$harga' WHERE id='$id' ");
             if ($query){
@@ -68,5 +63,4 @@ if($statusUpload == 0){
             window.location="../menu"</script>';
         }
     }
-}
 echo $message;

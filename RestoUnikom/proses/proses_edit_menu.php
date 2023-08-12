@@ -18,7 +18,7 @@ $imageType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
 if(!empty($_POST['input_menu_validate'])){
     // Cek gambar atau bukan
-    $cek = getimagesize($_FILES['foto']['name_menu']);
+    $cek = getimagesize($_FILES['foto']['tmp_name']);
     if($cek === false){
         $message = "Ini bukan file gambar";
         $statusUpload = 0;

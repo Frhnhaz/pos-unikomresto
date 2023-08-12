@@ -7,7 +7,7 @@ $query = mysqli_query($conn, "SELECT *, SUM(harga * jumlah ) AS harga_total FROM
         LEFT JOIN tb_list_order ON tb_list_order.kode_order = tb_order.id_order
         LEFT JOIN tb_menu ON tb_menu.id = tb_list_order.menu
         LEFT JOIN tb_bayar ON tb_bayar.id_bayar = tb_order.id_order
-        GROUP BY id_order");
+        GROUP BY id_order ORDER BY waktu_order DESC");
 while ($record = mysqli_fetch_array($query)) {
     $result[] = $record;
 }
@@ -87,7 +87,7 @@ while ($record = mysqli_fetch_array($query)) {
             ?>
 
                     <!-- Modal edit menu -->
-                    <div class="modal fade" id="modalEdit<?php echo $row['id_order'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="modalEdit<?php echo $row['id_list_order'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-xl modal-fullscreen-md-down">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -137,7 +137,7 @@ while ($record = mysqli_fetch_array($query)) {
                     </div>
 
                     <!-- Modal delete user -->
-                    <div class="modal fade" id="modalDelete<?php echo $row['id_order'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="modalDelete<?php echo $row['id_list_order'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-md modal-fullscreen-md-down">
                             <div class="modal-content">
                                 <div class="modal-header">
